@@ -1,0 +1,12 @@
+build/
+.gradle
+gradle
+gradlew
+gradlew.bat
+local.properties
+
+# IDEA files and dirs
+.idea
+.idea/workspace.xml
+*.iml
+*.eml
