@@ -7,8 +7,11 @@
 
     <string name="start_failing_receiver">Missing Intent flags demo (fails)</string>
     <string name="start_succeeding_receiver">Intent flags demo (works)</string>
+    <string name="start_navigation_activity">Navigation activity (location rule)</string>
 
     <string name="title_activity_receiver">ReceiverActivity</string>
     <!-- identifier receiverText will trigger custom lint rule ResourceIdNaming -->
     <string name="receiverText">Activity started by broadcast receiver!</string>
+
+    <string name="title_activity_navigation">Navigation</string>
 </resources>

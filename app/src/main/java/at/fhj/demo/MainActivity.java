@@ -1,5 +1,6 @@
 package at.fhj.demo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -17,6 +18,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         findViewById(R.id.start_failing_receiver).setOnClickListener(this);
         findViewById(R.id.start_working_receiver).setOnClickListener(this);
+        findViewById(R.id.start_navigation_activity).setOnClickListener(this);
     }
 
     @Override
@@ -44,6 +46,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             FailingReceiver.notify(this);
         } else if (v.getId() == R.id.start_working_receiver) {
             WorkingReceiver.notify(this);
+        } else if (v.getId() == R.id.start_navigation_activity) {
+            startActivity(new Intent(this, NavigationActivity.class));
         }
     }
 }
