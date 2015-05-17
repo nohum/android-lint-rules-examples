@@ -1,4 +1,4 @@
-package at.fhj.demo;
+package at.fhj.demo.internet;
 
 import android.os.AsyncTask;
 
