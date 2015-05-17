@@ -1,12 +1,15 @@
 package at.fhj.demo.internet;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
 import org.apache.http.StatusLine;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.IOException;
@@ -22,16 +25,29 @@ public class AsyncHttpClientTask extends AsyncTask<String, Void, String> {
 
         HttpClient client = new DefaultHttpClient();
 
+        execute(client, request);
+        return null;
+    }
+
+    private HttpEntity execute(HttpClient client, HttpRequestBase request) {
         try {
+            request.addHeader("Cookie", getCookieValues());
+
             HttpResponse response = client.execute(request);
 
             StatusLine status = response.getStatusLine();
-            HttpEntity entity = response.getEntity();
+            if (status.getStatusCode() == HttpStatus.SC_OK) {
+                return response.getEntity();
+            }
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e("Project", "http request failure", e);
         }
 
         return null;
+    }
+
+    private String getCookieValues() {
+        return ""; // implement
     }
 
     @Override
