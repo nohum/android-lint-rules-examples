@@ -27,7 +27,7 @@ public class AsyncSocketTask extends AsyncTask<String, Void, String> {
                 plainRequest.append(URI.create(url).getHost());
                 plainRequest.append("\n");
 
-                socket.getOutputStream().write(plainRequest.toString().getBytes());
+                socket.getOutputStream().write(plainRequest.toString().getBytes("ASCII"));
             }
         } catch (IOException e) {
             e.printStackTrace();
