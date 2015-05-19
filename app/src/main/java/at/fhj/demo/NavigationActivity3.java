@@ -15,11 +15,18 @@ public class NavigationActivity3 extends Activity {
         setContentView(R.layout.activity_navigation);
 
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        // possibility for a false positive here with the LocationUsageWithoutPermission rule
-        // suppose instead of the string "data" below this could be "network" - as the algorithm
-        // is doing heuristic matching, "network" would match although "gps" is the real provider
+
+        // real match
         locationManager.requestSingleUpdate(LocationManager.GPS_PROVIDER,
                 new InternalLocationListener("data"), Looper.myLooper());
+
+        // false positive ("network" string on the stack)
+        locationManager.requestSingleUpdate(LocationManager.GPS_PROVIDER,
+                new InternalLocationListener("network"), Looper.myLooper());
+
+        // must not be detected
+        locationManager.requestSingleUpdate(LocationManager.NETWORK_PROVIDER,
+                new InternalLocationListener("gps"), Looper.myLooper());
     }
 
     private class InternalLocationListener implements LocationListener {

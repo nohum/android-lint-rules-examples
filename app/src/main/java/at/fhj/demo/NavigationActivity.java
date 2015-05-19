@@ -19,7 +19,7 @@ public class NavigationActivity extends Activity implements LocationListener {
         setContentView(R.layout.activity_navigation);
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        // error detected by LocationUsageWithoutPermission rule (if fine permission is commented out in AndroidManifest.xml)
+        // real match with FINE permission commented out
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, MILLISECONDS_BETWEEN_UPDATES,
                 MIN_METERS_MOVED, this);
     }
@@ -27,8 +27,7 @@ public class NavigationActivity extends Activity implements LocationListener {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // not detected by LocationUsageWithoutPermission as not part of the rule
-        locationManager.removeUpdates(this);
+        locationManager.removeUpdates(this);                                 // must not be detected
     }
 
     @Override

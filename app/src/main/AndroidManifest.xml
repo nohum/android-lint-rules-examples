@@ -37,6 +37,10 @@
             android:name=".NavigationActivity3"
             android:label="@string/title_activity_navigation" >
         </activity>
+        <activity
+            android:name=".NavigationActivity4"
+            android:label="@string/title_activity_navigation" >
+        </activity>
 
         <receiver
             android:name=".FailingReceiver"

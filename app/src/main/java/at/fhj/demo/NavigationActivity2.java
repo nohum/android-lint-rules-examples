@@ -17,7 +17,7 @@ public class NavigationActivity2 extends Activity {
         setContentView(R.layout.activity_navigation);
 
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        // this works as coarse location is switched on in permissions
+        // real match
         locationManager.requestSingleUpdate(LocationManager.NETWORK_PROVIDER, new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
