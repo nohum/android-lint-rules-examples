@@ -22,7 +22,6 @@ public class AsyncOkHttpFalseNegativeTask extends AsyncTask<String, Void, String
         Response response = null;
         try {
             // false negative, should be detected
-
             response = client.newCall(request).execute();
 
             if (response.isSuccessful()) {

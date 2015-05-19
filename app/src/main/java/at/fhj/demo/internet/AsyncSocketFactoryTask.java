@@ -18,13 +18,13 @@ public class AsyncSocketFactoryTask extends AsyncTask<String, Void, String> {
         SocketFactory factory = SocketFactory.getDefault();
 
         try {
-            Socket falsePositive = factory.createSocket();
+            Socket falsePositive = factory.createSocket();                         // false positive
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         try {
-            Socket shouldBeDetected = factory.createSocket(urls[0], 80);
+            Socket shouldBeDetected = factory.createSocket(urls[0], 80);           // real match
         } catch (IOException e) {
             e.printStackTrace();
         }

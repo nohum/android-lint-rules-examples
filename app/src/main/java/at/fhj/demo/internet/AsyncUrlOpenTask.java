@@ -15,7 +15,7 @@ public class AsyncUrlOpenTask extends AsyncTask<String, Void, String> {
 
         try {
             URL website = new URL("https://www.google.com");
-            HttpURLConnection connection = (HttpURLConnection) website.openConnection();
+            HttpURLConnection connection = (HttpURLConnection) website.openConnection();   // real match
 
             InputStream websiteData = connection.getInputStream();
 

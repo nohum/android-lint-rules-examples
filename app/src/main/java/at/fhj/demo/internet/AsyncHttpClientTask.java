@@ -25,7 +25,7 @@ public class AsyncHttpClientTask extends AsyncTask<String, Void, String> {
 
         HttpClient client = new DefaultHttpClient();
 
-        execute(client, request);
+        execute(client, request);                                                  // false positive
         return null;
     }
 
@@ -33,7 +33,7 @@ public class AsyncHttpClientTask extends AsyncTask<String, Void, String> {
         try {
             request.addHeader("Cookie", getCookieValues());
 
-            HttpResponse response = client.execute(request);
+            HttpResponse response = client.execute(request);                       // real match
 
             StatusLine status = response.getStatusLine();
             if (status.getStatusCode() == HttpStatus.SC_OK) {

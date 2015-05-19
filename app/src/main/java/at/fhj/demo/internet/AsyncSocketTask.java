@@ -7,6 +7,8 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.URI;
 
+import at.fhj.demo.SocketHelper;
+
 public class AsyncSocketTask extends AsyncTask<String, Void, String> {
 
     @Override
@@ -18,7 +20,7 @@ public class AsyncSocketTask extends AsyncTask<String, Void, String> {
         String url = urls[0];
         try {
             Socket socket = new Socket();
-            socket.connect(new InetSocketAddress(url, 80));
+            socket.connect(new InetSocketAddress(url, 80));                         // real match
 
             if (socket.isConnected()) {
                 StringBuilder plainRequest = new StringBuilder();
@@ -29,8 +31,17 @@ public class AsyncSocketTask extends AsyncTask<String, Void, String> {
 
                 socket.getOutputStream().write(plainRequest.toString().getBytes("ASCII"));
             }
+
+            // though being not a useful statements, inner expressions like this must be detected too
+            (socket != null ? socket : null).connect(null);
+            // same here
+            ((Socket) socket).connect(null);                                       // real match
         } catch (IOException e) {
             e.printStackTrace();
+
+            // simulate the SAME variable name as above (though different class): CLEAR FALSE POSITIVE
+            SocketHelper socket = new SocketHelper();
+            socket.execute(); // even same method name                             // false positive
         }
 
         return null;
