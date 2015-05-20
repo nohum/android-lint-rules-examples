@@ -40,5 +40,12 @@ public class NavigationActivity2 extends Activity {
 
             }
         }, Looper.myLooper());
+
+        // false positive
+        requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 100, null);
+    }
+
+    private void requestLocationUpdates(String provider, long minTime, long minDistance, LocationListener listener) {
+        // dummy false positive
     }
 }
