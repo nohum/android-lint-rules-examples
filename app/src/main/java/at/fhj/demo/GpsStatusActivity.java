@@ -18,11 +18,32 @@ public class GpsStatusActivity extends Activity implements LocationListener, Gps
         setContentView(R.layout.activity_navigation);
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
+        String myGpsProvider = LocationManager.GPS_PROVIDER;
+        String gpsProvider2 = getPossibleProvider();
+
         // false positive
         locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
         // real match
+        locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+
+        // real match
+        locationManager.isProviderEnabled(myGpsProvider);
+
+        // real match
+        locationManager.isProviderEnabled(gpsProvider2);
+
+        // real match
+        locationManager.isProviderEnabled(MILLISECONDS_BETWEEN_UPDATES < 10000 ? LocationManager.NETWORK_PROVIDER : getPossibleProvider());
+
+        // real match
         locationManager.isProviderEnabled("gps");
+
+        // real match
+        locationManager.isProviderEnabled(MILLISECONDS_BETWEEN_UPDATES < 10000 ? LocationManager.GPS_PROVIDER : LocationManager.NETWORK_PROVIDER);
+
+        // false positive
+        locationManager.isProviderEnabled(MILLISECONDS_BETWEEN_UPDATES < 10000 ? LocationManager.NETWORK_PROVIDER : "network");
 
         // should be detected with data-flow analysis
         locationManager.isProviderEnabled(getPossibleProvider());
