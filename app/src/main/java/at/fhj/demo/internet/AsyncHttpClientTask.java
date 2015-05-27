@@ -19,28 +19,30 @@ public class AsyncHttpClientTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... urls) {
+        doRequest(urls[0]);
+        return null;
+    }
 
+    protected String doRequest(String url) {
         HttpGet request = new HttpGet();
-        request.setURI(URI.create("http://www.google.at"));
+        request.setURI(URI.create(url));
+        request.addHeader("Cookie", getCookieValues());
 
         HttpClient client = new DefaultHttpClient();
 
-        execute(client, request);                                                  // false positive
-        return null;
+        HttpEntity result = execute(client, request);                              // false positive
+        return processResult(result);
     }
 
     private HttpEntity execute(HttpClient client, HttpRequestBase request) {
         try {
-            request.addHeader("Cookie", getCookieValues());
-
             HttpResponse response = client.execute(request);                       // real match
-
             StatusLine status = response.getStatusLine();
             if (status.getStatusCode() == HttpStatus.SC_OK) {
                 return response.getEntity();
             }
         } catch (IOException e) {
-            Log.e("Project", "http request failure", e);
+            Log.e("App", "http doRequest failure", e);
         }
 
         return null;
@@ -48,6 +50,10 @@ public class AsyncHttpClientTask extends AsyncTask<String, Void, String> {
 
     private String getCookieValues() {
         return ""; // implement
+    }
+
+    private String processResult(HttpEntity result) {
+        return null; // implement
     }
 
     @Override
