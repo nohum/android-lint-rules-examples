@@ -21,6 +21,11 @@ public class GpsStatusActivity extends Activity implements LocationListener, Gps
         String myGpsProvider = LocationManager.GPS_PROVIDER;
         String gpsProvider2 = getPossibleProvider();
 
+        String gpsProviderConditional = myGpsProvider;
+        if (hasWindowFocus()) {
+            gpsProviderConditional = LocationManager.NETWORK_PROVIDER;
+        }
+
         // false positive
         locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
@@ -32,6 +37,9 @@ public class GpsStatusActivity extends Activity implements LocationListener, Gps
 
         // real match
         locationManager.isProviderEnabled(gpsProvider2);
+
+        // real match
+        locationManager.isProviderEnabled(gpsProviderConditional);
 
         // real match
         locationManager.isProviderEnabled(MILLISECONDS_BETWEEN_UPDATES < 10000 ? LocationManager.NETWORK_PROVIDER : getPossibleProvider());
