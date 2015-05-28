@@ -47,14 +47,14 @@ public class GpsStatusActivity extends Activity implements LocationListener, Gps
         // real match
         locationManager.isProviderEnabled("gps");
 
-        // real match
+        // real matchcom
         locationManager.isProviderEnabled(MILLISECONDS_BETWEEN_UPDATES < 10000 ? LocationManager.GPS_PROVIDER : LocationManager.NETWORK_PROVIDER);
 
         // false positive
         locationManager.isProviderEnabled(MILLISECONDS_BETWEEN_UPDATES < 10000 ? LocationManager.NETWORK_PROVIDER : "network");
 
         // should be detected with data-flow analysis
-        locationManager.isProviderEnabled(getPossibleProvider());
+        locationManager.isProviderEnabled(this.getPossibleProvider());
 
         // should be detected with data-flow analysis
         locationManager.isProviderEnabled(getPossibleProviderInverse());
