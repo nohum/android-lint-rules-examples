@@ -19,8 +19,10 @@ public class NavigationActivity extends Activity implements LocationListener {
         setContentView(R.layout.activity_navigation);
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        // real match with FINE permission commented out
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, MILLISECONDS_BETWEEN_UPDATES,
+
+        // real match
+        String provider = LocationManager.GPS_PROVIDER;
+        locationManager.requestLocationUpdates(provider, MILLISECONDS_BETWEEN_UPDATES,
                 MIN_METERS_MOVED, this);
     }
 

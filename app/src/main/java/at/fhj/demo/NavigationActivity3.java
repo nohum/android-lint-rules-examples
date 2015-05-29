@@ -24,7 +24,7 @@ public class NavigationActivity3 extends Activity {
         locationManager.requestSingleUpdate(LocationManager.GPS_PROVIDER,
                 new InternalLocationListener("network"), Looper.myLooper());
 
-        // must not be detected
+        // must not be detected ("gps" string on the stack, but is "network")
         locationManager.requestSingleUpdate(LocationManager.NETWORK_PROVIDER,
                 new InternalLocationListener("gps"), Looper.myLooper());
     }
@@ -37,23 +37,9 @@ public class NavigationActivity3 extends Activity {
             this.data = additionalData;
         }
 
-        @Override
-        public void onLocationChanged(Location location) {
-        }
-
-        @Override
-        public void onStatusChanged(String provider, int status, Bundle extras) {
-
-        }
-
-        @Override
-        public void onProviderEnabled(String provider) {
-
-        }
-
-        @Override
-        public void onProviderDisabled(String provider) {
-
-        }
+        public void onLocationChanged(Location location) { }
+        public void onStatusChanged(String provider, int status, Bundle extras) { }
+        public void onProviderEnabled(String provider) { }
+        public void onProviderDisabled(String provider) { }
     }
 }
