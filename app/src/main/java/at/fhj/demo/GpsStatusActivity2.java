@@ -1,13 +1,10 @@
 package at.fhj.demo;
 
 import android.app.Activity;
-import android.location.GpsStatus;
-import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 
-public class GpsStatusActivity2 extends Activity implements LocationListener, GpsStatus.Listener {
+public class GpsStatusActivity2 extends Activity {
 
     private static final int MILLISECONDS_BETWEEN_UPDATES = 5000;
     private static final int MIN_METERS_MOVED = 20;
@@ -29,7 +26,9 @@ public class GpsStatusActivity2 extends Activity implements LocationListener, Gp
             return LocationManager.PASSIVE_PROVIDER;
         }
 
-        return LocationManager.GPS_PROVIDER;
+        String provider = LocationManager.NETWORK_PROVIDER;
+        provider = LocationManager.GPS_PROVIDER;
+        return provider;
     }
 
     private boolean hasPreferencesUseExactLocationChecked() {
@@ -38,30 +37,5 @@ public class GpsStatusActivity2 extends Activity implements LocationListener, Gp
 
     private boolean hasPreferencesUseLowEnergyChecked() {
         return true; // dummy method
-    }
-
-    @Override
-    public void onGpsStatusChanged(int event) {
-
-    }
-
-    @Override
-    public void onLocationChanged(Location location) {
-
-    }
-
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-
-    }
-
-    @Override
-    public void onProviderEnabled(String provider) {
-
-    }
-
-    @Override
-    public void onProviderDisabled(String provider) {
-
     }
 }
