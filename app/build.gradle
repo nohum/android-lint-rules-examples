@@ -8,7 +8,7 @@ android {
         applicationId "at.fhj.demo"
         minSdkVersion 14
         //noinspection OldTargetApi
-        targetSdkVersion 21
+        targetSdkVersion 20
         versionCode 1
         versionName "1.0"
     }
