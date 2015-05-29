@@ -21,7 +21,7 @@ public class NavigationActivity3 extends Activity {
                 new InternalLocationListener("data"), Looper.myLooper());
 
         // false positive ("network" string on the stack)
-        locationManager.requestSingleUpdate(LocationManager.GPS_PROVIDER,
+        locationManager.requestSingleUpdate(LocationManager.NETWORK_PROVIDER,
                 new InternalLocationListener("network"), Looper.myLooper());
 
         // must not be detected ("gps" string on the stack, but is "network")
