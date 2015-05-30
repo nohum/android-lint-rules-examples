@@ -12,6 +12,8 @@ gradle --no-daemon lint
 
 (However, to stay sane it is the best to write debug outputs to a file at `/tmp`.)
 
+The final lint result may be found after an successful invocation of the above command at the following path: `app/build/outputs/lint-results.html`.
+
 Some rules provided by the other repository like the `LocationUsageDetectorAst` and `LocationUsageDetectorBytecode`
 change their behaviour in detecting issues if the api level is changed.
 

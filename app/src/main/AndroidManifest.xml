@@ -34,6 +34,14 @@
             android:label="@string/title_activity_navigation" >
         </activity>
         <activity
+            android:name=".GpsStatusActivity3"
+            android:label="@string/title_activity_navigation" >
+        </activity>
+        <activity
+            android:name=".GpsStatusActivity4"
+            android:label="@string/title_activity_navigation" >
+        </activity>
+        <activity
             android:name=".NavigationActivity"
             android:label="@string/title_activity_navigation" >
         </activity>
@@ -43,10 +51,6 @@
         </activity>
         <activity
             android:name=".NavigationActivity3"
-            android:label="@string/title_activity_navigation" >
-        </activity>
-        <activity
-            android:name=".NavigationActivity4"
             android:label="@string/title_activity_navigation" >
         </activity>
 
