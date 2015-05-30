@@ -20,6 +20,8 @@ public class NavigationActivity extends Activity implements LocationListener {
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         String provider = LocationManager.GPS_PROVIDER;
+
+        // real match
         locationManager.requestLocationUpdates(provider, MILLISECONDS_BETWEEN_UPDATES,
                 MIN_METERS_MOVED, this);
     }
